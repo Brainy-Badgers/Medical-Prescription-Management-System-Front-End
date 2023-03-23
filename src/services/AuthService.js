@@ -1,7 +1,8 @@
 import axios from "axios";
 import { setAuthToken } from "../helpers/setAuthToken";
+import { BaseUrl } from "../config/ConnectionStrings";
 
-const API_URL = "https://localhost:44382/api/Auth/";
+const API_URL = BaseUrl + "api/Auth/";
 
 export const submitLoginData = async (data) => {
   await axios({

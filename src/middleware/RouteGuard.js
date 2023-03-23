@@ -1,28 +1,31 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const RouteGuard = ({ component: Component, ...rest }) => {
-  function hasJWT() {
-    let flag = false;
+const isAuthenticated = () => {
+  let flag = false;
+  localStorage.getItem("token") ? (flag = true) : (flag = false);
 
-    //check user has JWT token
-    localStorage.getItem("token") ? (flag = true) : (flag = false);
+  return flag;
+};
 
-    return flag;
-  }
+function RouteGuard(props) {
+  const { Component } = props;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let login = isAuthenticated();
+
+    if (!login) {
+      navigate("/login");
+    }
+  }, []);
 
   return (
-    <Route
-      {...rest}
-      render={(props) =>
-        hasJWT() ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to={{ pathname: "/login" }} />
-        )
-      }
-    />
+    <div>
+      <Component />
+    </div>
   );
-};
+}
 
 export default RouteGuard;
