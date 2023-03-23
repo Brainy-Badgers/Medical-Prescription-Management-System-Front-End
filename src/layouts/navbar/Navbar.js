@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Dropdown from "react-bootstrap/Dropdown";
 import logo from "../../assets/Images/logo.png";
 import { logout } from "../../services/AuthService";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -11,7 +12,7 @@ export default function Navbar() {
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary static-top navbarCustom">
         <div className="container">
           <a className="navbar-brand d-flex" role="button" href="/">
-            <img src={logo} alt="..." height="56" />
+            <img src={logo} alt="..." height="65" />
           </a>
           <button
             className="navbar-toggler"
@@ -27,29 +28,13 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a
-                  className="nav-link"
-                  aria-current="page"
-                  role="button"
-                  href="/patients"
-                >
-                  patients
-                </a>
+                <Link className="nav-link" to="/patients" >patients</Link>
               </li>
               <li className="nav-item">
-                <a
-                  className="nav-link"
-                  aria-current="page"
-                  role="button"
-                  href="/prescriptions"
-                >
-                  Prescriptions
-                </a>
+                <Link className="nav-link" to="/prescriptions">Prescriptions</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" role="button" href="/stock">
-                  Stock
-                </a>
+                <Link className="nav-link" to="/stock"> Stock</Link>
               </li>
             </ul>
           </div>

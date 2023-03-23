@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { MyContext } from "../contexts/AuthContext";
+import { UserContext } from "../contexts/AuthContext";
 import Layout from "../layouts/MainLayout";
 
 export default function Home() {
-  const { globalState, setGlobalState } = useContext(MyContext);
+  const { globalState, setGlobalState } = useContext(UserContext);
 
   // Reading values from the global state
   const theme = globalState.theme;
